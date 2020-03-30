@@ -23,7 +23,7 @@
 		<liquibase.version>3.4.1</liquibase.version>
 		<liquibase.hibernate.version>3.6</liquibase.hibernate.version>
 		<liquibase.spring-beans.version>4.1.7.RELEASE</liquibase.spring-beans.version>
-		<liquibase.spring-data-jpa.version>1.7.3.RELEASE</liquibase.spring-data-jpa.version>
+		<liquibase.spring-data-jpa.version>1.11.23.RELEASE</liquibase.spring-data-jpa.version>
 	</properties>
 
 	<dependencies>
