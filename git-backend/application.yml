@@ -1,0 +1,25 @@
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL57Dialect
+    database: MYSQL
+    show-sql: true
+    ddl-auto: none
+    naming:
+      physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+      implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+tenants:
+  datasources:
+    cat:
+      url: jdbc:mysql://localhost:3306/cat?useUnicode=true&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=Europe/Brussels
+      driverClassName: com.mysql.cj.jdbc.Driver
+      username: root
+      password:
+      maximum-pool-size: 16
+      pool-name: Hikari-Cat
+    dog:
+      url: jdbc:mysql://localhost:3306/dog?useUnicode=true&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=Europe/Brussels
+      driverClassName: com.mysql.cj.jdbc.Driver
+      username: root
+      password:
+      maximum-pool-size: 16
+      pool-name: Hikari-Dog

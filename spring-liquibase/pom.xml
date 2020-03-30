@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.2.5.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.sachareinert</groupId>
+	<artifactId>spring-liquibase</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>spring-liquibase</name>
+	<description>Demo project for Spring Boot</description>
+
+	<properties>
+		<java.version>1.8</java.version>
+
+		<spring.cloud.version>2.2.2.RELEASE</spring.cloud.version>
+		<jjwt.version>0.9.1</jjwt.version>
+		<lombok.version>1.18.12</lombok.version>
+		<liquibase.version>3.4.1</liquibase.version>
+		<liquibase.hibernate.version>3.6</liquibase.hibernate.version>
+		<liquibase.spring-beans.version>4.1.7.RELEASE</liquibase.spring-beans.version>
+		<liquibase.spring-data-jpa.version>1.7.3.RELEASE</liquibase.spring-data-jpa.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+			<version>${spring.cloud.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>${jjwt.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+			<version>${liquibase.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-maven-plugin</artifactId>
+			<version>${liquibase.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.liquibase.ext</groupId>
+			<artifactId>liquibase-hibernate4</artifactId>
+			<version>${liquibase.hibernate.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<version>${liquibase.version}</version>
+				<configuration>
+					<diffChangeLogFile>${project.basedir}/src/main/resources/liquibase/changelog/diffs/${maven.build.timestamp}_changelog.xml</diffChangeLogFile>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.liquibase.ext</groupId>
+						<artifactId>liquibase-hibernate4</artifactId>
+						<version>${liquibase.hibernate.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-beans</artifactId>
+						<version>${liquibase.spring-beans.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.springframework.data</groupId>
+						<artifactId>spring-data-jpa</artifactId>
+						<version>${liquibase.spring-data-jpa.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

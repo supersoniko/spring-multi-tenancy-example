@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: multi-tenant-backend
+  cloud:
+    config:
+      label: master # optional
+      uri: http://localhost:8869 # optional

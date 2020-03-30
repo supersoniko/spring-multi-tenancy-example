@@ -1,0 +1,42 @@
+server:
+  port: 8069
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+      type:
+        descriptor:
+          sql:
+            BasicBinder: TRACE
+
+spring:
+  # IMPORTANT that this resembles the liquibase default-schema
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://localhost:3306/audi?useUnicode=true&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=Europe/Brussels
+    username: root
+    password:
+    hikari:
+      poolName: Hikari
+      auto-commit: false
+      data-source-properties:
+        useServerPrepStmts: true
+  liquibase:
+    enabled: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health
+    jmx:
+      exposure:
+        exclude=*:
+  health:
+    db:
+      enabled: false
+
+jwt:
+  secret: NeDDIh3gaydd4wnvmR5e

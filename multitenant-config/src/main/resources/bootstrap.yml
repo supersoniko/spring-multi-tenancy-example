@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: file:///Users/sachareinert/Projects/Java/multitenancy/git-backend
